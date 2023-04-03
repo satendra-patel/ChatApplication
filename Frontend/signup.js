@@ -6,13 +6,15 @@ myForm.addEventListener('submit', async(e) => {
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
+    const mobileNo=document.getElementById("mobileNo");
 
     try {
         const res = await axios.post('', 
         {
             name: name.value, 
             email: email.value, 
-            password: password.value
+            password: password.value,
+            mobileNo:mobileNo.value
         }
         );
         console.log('SIGN UP RESPONSE: ', res);
@@ -20,6 +22,7 @@ myForm.addEventListener('submit', async(e) => {
             name.value = '';
             email.value = '';
             password.value = '';
+            mobileNo.value='';
             clearError();
             
         }
