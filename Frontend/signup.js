@@ -9,7 +9,7 @@ myForm.addEventListener('submit', async(e) => {
     const mobileNo=document.getElementById("mobileNo");
 
     try {
-        const res = await axios.post('', 
+        const res = await axios.post('http://localhost:5000/user/signup', 
         {
             name: name.value, 
             email: email.value, 
@@ -24,6 +24,7 @@ myForm.addEventListener('submit', async(e) => {
             password.value = '';
             mobileNo.value='';
             clearError();
+            window.location.href = 'login.html';
             
         }
         

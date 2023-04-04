@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <div style="text-align: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Chat App</div>
+    <div>
+        <form id="loginform">
+            <label for="Email">Enter Your Email</label>
+            <input type="email" name="Email" id="email" required>
+            <label for="password">Enter the Password</label>
+            <input type="password" name="" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div>
+        <a href="signup.html">NewUser? click here</a>
+    </div>
+    <div id="error">
+        <h3 id="error-text"></h3>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

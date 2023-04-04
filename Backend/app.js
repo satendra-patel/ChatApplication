@@ -11,8 +11,9 @@ app.use(cors());
 
 dotenv.config();
 const userRoutes=require('../Backend/router/user');
+const data_base = require('./config/database');
 
-app.use(userRoutes);
+app.use('/user',userRoutes);
 
 
 
