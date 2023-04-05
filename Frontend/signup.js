@@ -6,7 +6,7 @@ myForm.addEventListener('submit', async(e) => {
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
-    const mobileNo=document.getElementById("mobileNo");
+    const mobileNo=document.getElementById('MobileNo');
 
     try {
         const res = await axios.post('http://localhost:5000/user/signup', 

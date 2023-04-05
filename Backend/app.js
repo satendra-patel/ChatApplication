@@ -20,8 +20,8 @@ app.use('/message',messageRoutes);
 
 
 
-
-data_base.sync()
+data_base.sync({force: true})
+//data_base.sync()
     .then(() => {
         app.listen(process.env.PORT || 5000);
         console.log('app is running')

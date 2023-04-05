@@ -18,7 +18,7 @@ const User=data_base.define('user',{
         inique:true,
         allowNull:false
     },
-    phoneNo:{
+    mobileNo:{
         type:Sequelize.INTEGER,
         allowNull:false
     },

@@ -7,15 +7,16 @@ const bcrypt=require('bcrypt');
 const saltRounds=10;
 
 exports.addUser = (req, res) => {
-    const {name, email,mobileNo, password} = req.body;
+    const {email ,name,  mobileNo , password} = req.body;
 
 
     if(name.length > 0 && email.length > 0 && password.length > 0 && mobileNo.length > 0) {
         bcrypt.hash(password, saltRounds, function(error, hash) {
             User.create(
                 {
-                    name: name, 
+                     
                     email: email,
+                    name: name,
                     mobileNo:mobileNo, 
                     password: hash
                 })
