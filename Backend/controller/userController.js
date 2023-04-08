@@ -1,5 +1,6 @@
 const User=require('../model/user');
 const dotenv = require('dotenv');
+const jwt=require('jsonwebtoken');
 dotenv.config();
 
 
@@ -52,7 +53,7 @@ exports.logUser = (req, res) => {
                         return res.status(500).json({success: false, message: err});
                     }
                     if(result == true) {
-                        const token = jwt.sign({userId: user.id, name: user.name},process.env.SecretKey);
+                        const token = jwt.sign({userId: user.id, name: user.name},'Satendra');
                         res.status(200).json({
                             success: true, 
                             message: 'user found',

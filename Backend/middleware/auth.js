@@ -3,12 +3,13 @@ const User = require('../model/user');
 const dotenv=require('dotenv');
 dotenv.config();
 
+
 exports.authenticate = (req, res, next) => {
     
     try {
         const token = req.header('Authorization');
 
-        const tokenUser = jwt.verify(token, process.env.SecretKey);
+        const tokenUser = jwt.verify(token, 'Satendra');
 
         User.findByPk(tokenUser.userId)
             .then(user => {

@@ -19,7 +19,7 @@ const User=data_base.define('user',{
         allowNull:false
     },
     mobileNo:{
-        type:Sequelize.INTEGER,
+        type:Sequelize.STRING,
         allowNull:false
     },
     password:Sequelize.STRING

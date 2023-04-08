@@ -1,4 +1,4 @@
-const myForm = document.getElementById('log-in-form');
+const myForm = document.getElementById('loginform');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
@@ -19,7 +19,9 @@ myForm.addEventListener('submit', async (e) => {
             password.value = '';
             confirm('User logged in successfully!');
             
+            
             localStorage.setItem('token', res.data.token);
+            window.location.href = 'chat.html';
     
            
         }
