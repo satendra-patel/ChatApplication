@@ -1,11 +1,25 @@
 const Message = require('../model/message');
+const Group = require('../model/group');
+const GroupUser = require('../model/groupUser');
+const { Op } = require("sequelize");
 
-exports.saveMessage = async (req, res) => {
+exports.saveMessage = async (req, res, next) => {
     try {
         const message = req.body.message;
+        const groupId = req.body.groupId;
+        // console.log(message);
         if(isValidMessage(message)){
+            const groupUser = await GroupUser.findOne({where: {
+                groupId: groupId,
+                userId: req.user.id
+            }});
+            if(!groupUser) {
+                throw new Error('user not found in group');
+            }
             await req.user.createMessage({
-                message: message
+                message: message,
+                groupId: groupId,
+                from: req.user.name
             });
             res.status(200).json({message: 'msg saved to database'});
         } else {
@@ -17,10 +31,18 @@ exports.saveMessage = async (req, res) => {
     }
 };
 
-exports.fetchMessage = async (req, res, next) => {
+exports.fetchNewMessages = async (req, res, next) => {
     try {
-        const messages = await Message.findAll();
-        res.status(200).json({messages: messages});
+        const lastMsgId = +req.query.lastMsgId;
+        const groupId = +req.query.groupId;
+      
+        const messages = await Message.findAll({where: {id:  {[Op.gt]: lastMsgId}}});
+
+        if(messages.length > 0) {
+            res.status(200).json({messages: messages});
+        } else {
+            res.status(201).json({message: 'no new messages'});
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({message: 'could not fetch messages'});

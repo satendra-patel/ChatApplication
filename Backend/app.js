@@ -19,6 +19,7 @@ dotenv.config();
 const userRoutes=require('../Backend/router/user');
 const messageRoutes=require('../Backend/router/message');
 const chatRoutes=require('./router/chat');
+const adminRoutes=require('./router/admin');
 
 User.hasMany(Message);
 Message.belongsTo(User);
@@ -32,6 +33,7 @@ const data_base = require('./config/database');
 app.use('/user',userRoutes);
 app.use('/message',messageRoutes);
 app.use('/chat',chatRoutes);
+app.use('/admin', adminRoutes);
 
 Group.belongsToMany(User, {through: GroupUser});
 User.belongsToMany(Group, {through: GroupUser});
