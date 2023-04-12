@@ -81,3 +81,12 @@ exports.getMembers = async (req, res, next) => {
         res.status(500).json({message: 'something went wrong'});
     }
 };
+exports.uploadFile = async(req,res) => {
+    try {
+        const fileURL = await S3Services.uploadFile('assets/flower.jpg')
+        res.status(200).json({ success: true, fileURL})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error)
+    }
+};
